@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Pixel Particles</title>
+  <link rel="stylesheet" href="./style.css">
+  <button id="testBTN">Test</button>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="container"></div>
+
+<script type="x-shader/x-vertex" id="vertexShader">
+  // uniform float amplitude;
+  // attribute float size;
+  uniform float amplitude;
+  uniform float test;
+
+  attribute vec3 vertexColor;
+
+  varying vec4 varColor;
+
+  float random (vec2 st) {
+    return fract(sin(dot(st.xy,
+                         vec2(12.9898,78.233)))*
+        43758.5453123);
+}
+
+
+
+  void main()
+  {
+  varColor = vec4(vertexColor, 1.0);
+
+  vec4 pos = vec4(position, 1.0);
+  pos.z = pos.z;
+  pos.y = pos.y;
+  pos.x = pos.x;
+
+  if(test == 1.0 || test == -1.0){
+    pos.x = pos.x * amplitude/1.2;
+    pos.y = pos.y * amplitude/1.2;
+    pos.z = pos.z * (amplitude * amplitude * amplitude * amplitude * amplitude * amplitude * amplitude * amplitude)*2.;
+  }
+
+  vec4 mvPosition = modelViewMatrix * pos * 0.1;
+
+  gl_PointSize = 1.0;
+  gl_Position = projectionMatrix * mvPosition;
+  }
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentShader">
+  varying vec4 varColor;
+
+  void main()
+  {
+  gl_FragColor = varColor;
+  }
+</script>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r62/three.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/trackball_ctrl_r62.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
