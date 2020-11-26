@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Pixel Particles</title>
+  <style>
+    .container{
+      overflow: hidden;
+    }
+    iframe body {
+      overflow: hidden;
+    }
+    .adver_body {
+            padding: 0;
+            margin: 0;
+        }
+  </style>
+</head>
+<body class="adver_body">
+<!-- partial:index.partial.html -->
+<div id="container"></div>
+
+<script type="x-shader/x-vertex" id="vertexShader">
+  // uniform float amplitude;
+  // attribute float size;
+  uniform float amplitude;
+  uniform float test;
+
+  attribute vec3 vertexColor;
+
+  varying vec4 varColor;
+
+  float random (vec2 st) {
+    return fract(sin(dot(st.xy,
+                         vec2(12.9898,78.233)))*
+        43758.5453123);
+}
+
+
+
+  void main()
+  {
+  varColor = vec4(vertexColor, 1.0);
+
+  vec4 pos = vec4(position, 1.0);
+  pos.x = pos.x * amplitude/1.2;
+  pos.y = pos.y * amplitude/1.2;
+  pos.z = pos.z * (amplitude * pow(amplitude, 6.)+amplitude * (pow(amplitude, 6.)*10.))*2.;
+
+  vec4 mvPosition = modelViewMatrix * pos * 0.1;
+
+  gl_PointSize = 1.0;
+  gl_Position = projectionMatrix * mvPosition;
+  }
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentShader">
+  varying vec4 varColor;
+
+  void main()
+  {
+  gl_FragColor = varColor;
+  }
+</script>
+<!-- partial -->
+  <script src='./three.min.js'></script>
+<script src='./trackball_ctrl_r62.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

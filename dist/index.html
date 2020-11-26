@@ -1,66 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>CodePen - Pixel Particles</title>
-  <link rel="stylesheet" href="./style.css">
-  <button id="testBTN">Test</button>
+    <meta charset="UTF-8">
+    <title>CodePen - Pixel Particles</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
 </head>
+<h1>Какой-нить заголовок сайта</h1>
+<h2>Какой-нить подзаголовок</h2>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, nesciunt ab quae incidunt perferendis accusantium alias est praesentium repudiandae, minus maiores numquam quos delectus! Magni, officia. Facilis labore assumenda nam nesciunt mollitia aliquam,
+    commodi id magnam tempore. Hic reiciendis modi quasi amet repudiandae, mollitia, beatae eligendi neque consequuntur magni vero. Quam sint commodi dolorum accusantium? Accusantium illo placeat laborum non nesciunt odit ducimus molestias saepe obcaecati
+    commodi! Esse, ex molestiae. Laborum minus unde nesciunt, consequatur odit facilis laboriosam nihil quasi, repellendus, rerum ut! Quisquam repellat aspernatur voluptatem, quibusdam sequi porro fugiat eum veniam pariatur iure amet odit impedit a quidem
+    dolore. Distinctio, sequi veritatis molestias tempore officiis rem porro dolorem nam?</p>
+<img src="test3.jpg" alt="">
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem modi earum natus delectus ex suscipit labore consectetur, nobis impedit nam voluptas amet repellendus expedita eum error quas cum eius, quidem voluptatum, possimus id magni doloremque. Quod,
+    voluptate eligendi non asperiores consequatur nihil delectus laborum qui! Sit quod pariatur quaerat sint magnam ut sed dolores libero possimus reiciendis aut, necessitatibus adipisci quia, dolorem perferendis fugit at assumenda, corrupti non velit!
+    Velit dolor temporibus quidem magnam incidunt tempora porro, omnis error nobis veritatis cum repudiandae officia distinctio suscipit dolores perspiciatis laborum facilis est molestiae dolorum sequi quaerat quae perferendis. Placeat maiores deserunt
+    qui corporis possimus cumque architecto nihil atque similique modi velit quo, culpa doloribus aperiam vitae ad unde quibusdam error. Quasi est pariatur minima iure consequatur maiores natus fuga laboriosam dolore rerum quod debitis quos inventore
+    assumenda quaerat, ab nostrum cumque aut fugit aspernatur. Nobis illum similique vitae aut officiis quod modi itaque officia recusandae quis vel at possimus voluptatibus rem voluptas, esse harum nam atque nostrum. Rem minus labore illum possimus exercitationem,
+    autem deserunt tenetur perferendis laudantium atque fugit ipsa neque dolore, animi corrupti cumque expedita ea tempora alias est ad deleniti. Eligendi, at libero iste nobis enim sequi vero?</p>
+<iframe src="frame.html" scrolling="no" width="250" height="250">
+  Ваш браузер не поддерживает плавающие фреймы!
+</iframe>
+
 <body>
-<!-- partial:index.partial.html -->
-<div id="container"></div>
-
-<script type="x-shader/x-vertex" id="vertexShader">
-  // uniform float amplitude;
-  // attribute float size;
-  uniform float amplitude;
-  uniform float test;
-
-  attribute vec3 vertexColor;
-
-  varying vec4 varColor;
-
-  float random (vec2 st) {
-    return fract(sin(dot(st.xy,
-                         vec2(12.9898,78.233)))*
-        43758.5453123);
-}
-
-
-
-  void main()
-  {
-  varColor = vec4(vertexColor, 1.0);
-
-  vec4 pos = vec4(position, 1.0);
-  pos.z = pos.z;
-  pos.y = pos.y;
-  pos.x = pos.x;
-
-  if(test == 1.0 || test == -1.0){
-    pos.x = pos.x * amplitude/1.2;
-    pos.y = pos.y * amplitude/1.2;
-    pos.z = pos.z * (amplitude * amplitude * amplitude * amplitude * amplitude * amplitude * amplitude * amplitude)*2.;
-  }
-
-  vec4 mvPosition = modelViewMatrix * pos * 0.1;
-
-  gl_PointSize = 1.0;
-  gl_Position = projectionMatrix * mvPosition;
-  }
-</script>
-
-<script type="x-shader/x-fragment" id="fragmentShader">
-  varying vec4 varColor;
-
-  void main()
-  {
-  gl_FragColor = varColor;
-  }
-</script>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r62/three.min.js'></script>
-<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/trackball_ctrl_r62.js'></script><script  src="./script.js"></script>
-
+    <!-- 
 </body>
 </html>
